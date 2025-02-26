@@ -1,0 +1,59 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        label, input {
+            display: block;
+        }
+        button {
+            align-self: end;
+        }
+    </style>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let errorMessage = document.getElementById("error-message");
+            
+            if (username === "admin" && password === "admin") {
+                window.location.href = "index.html";
+            } else {
+                errorMessage.innerText = "Invalid username or password.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form onsubmit="validateLogin(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <button type="submit">Login</button>
+    </form>
+    <p id="error-message" style="color:red;"></p>
+    <p>Don't have an account? <a href="register.html">Register</a></p>
+
+    <br><p>Gunakan username (admin) dan password (admin)</p>
+
+    <p>*hanya keperluan tugas login register statis menggunakan html</p>
+</body>
+</html>

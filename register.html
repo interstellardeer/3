@@ -1,0 +1,61 @@
+<!-- register.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        label, input {
+            display: block;
+        }
+        button {
+            align-self: end;
+        }
+    </style>
+
+    <script>
+        function registerUser(event) {
+            event.preventDefault();
+            let username = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirm-password").value;
+            let errorMessage = document.getElementById("error-message");
+            
+            if (password !== confirmPassword) {
+                errorMessage.innerText = "Passwords do not match.";
+                return;
+            }
+            
+            alert("Registration successful! Redirecting to login page.");
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+<body>
+    <h2>Register</h2>
+    <form onsubmit="registerUser(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br>
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" required><br>
+        <button type="submit">Register</button>
+    </form>
+    <p id="error-message" style="color:red;"></p>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+</body>
+</html>
